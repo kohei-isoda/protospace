@@ -1,24 +1,64 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|content|text|------|
+|user_id|integer|null: false, foreign_key: true|
+|prototype_id|integer|null: false, foreign_key: true|
 
-Things you may want to cover:
+### Association
+- belongs_to :user
+- belongs_to :prototype
 
-* Ruby version
 
-* System dependencies
+## imageテーブル
+|Column|Type|Options|
+|------|----|-------|
+|prototype_id|integer|null: false, foreign_key: true|
+|content|string|null:false|
 
-* Configuration
+### Association
+- belongs_to :prototype
 
-* Database creation
 
-* Database initialization
+## prototypeテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|title|string|null: false|
+|catchcopy|text|---------|
+|concept|text|-----------|
 
-* How to run the test suite
+### Association
+- belongs_to :user
+- has_many :comments
+- has_many :images
+- has_many :likes
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## likeテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|prototype_id|integer|null: false, foreign_key: true|
 
-* ...
+### Association
+- belongs_to :user
+- belongs_to :prototype
+
+
+##userテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false, unique: true, index: true|
+|email|string|null: false, unique: true, index: true|
+|password|string|null: false|
+|memberof|string|-----------|
+|profile|text|--------------|
+|works|string|--------------|
+
+### Association
+- has_many :comments
+- has_many :prototypes
+- has_many :likes
