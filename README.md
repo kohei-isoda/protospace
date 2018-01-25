@@ -12,7 +12,7 @@
 - belongs_to :prototype
 
 
-## imageテーブル
+## CapturedImageテーブル
 |Column|Type|Options|
 |------|----|-------|
 |prototype_id|integer|null: false, foreign_key: true|
@@ -54,9 +54,10 @@
 |name|string|null: false, unique: true, index: true|
 |email|string|null: false, unique: true, index: true|
 |password|string|null: false|
-|memberof|string|-----------|
+|avatar|string|-------------|
+|position|string|-----------|
 |profile|text|--------------|
-|works|string|--------------|
+|occupation|string|--------------|
 
 ### Association
 - has_many :comments
